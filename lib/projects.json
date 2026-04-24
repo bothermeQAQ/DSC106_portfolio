@@ -1,0 +1,74 @@
+[
+  {
+    "title": "League of Legends Ban Pick Prediction Model",
+    "year": 2025,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "A machine learning idea centered on analyzing drafting patterns and predicting game outcomes from champion select data."
+  },
+  {
+    "title": "WeChat Bot Integration for UCSD CSSA",
+    "year": 2024,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "A student organization tool project involving communication automation and integration features for club operations."
+  },
+  {
+    "title": "Personal Portfolio Website",
+    "year": 2026,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "A personal website for DSC 106 that showcases my background, resume, and future visualization projects."
+  },
+  {
+    "title": "Course Enrollment Trend Dashboard",
+    "year": 2023,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "A data visualization project exploring enrollment patterns across university departments with interactive charts."
+  },
+  {
+    "title": "Campus Event Recommendation App",
+    "year": 2024,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "A mobile-friendly web app concept for helping students discover campus events based on interests and schedules."
+  },
+  {
+    "title": "Python Study Resource Tracker",
+    "year": 2023,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "A lightweight tool for organizing programming tutorials, assignments, and notes for technical coursework."
+  },
+  {
+    "title": "Weather Data API Explorer",
+    "year": 2025,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "A programming project that fetches and summarizes weather data from public APIs for analysis and visualization."
+  },
+  {
+    "title": "Student Budget Planner",
+    "year": 2024,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "A personal finance web tool designed to help students estimate monthly expenses and track spending goals."
+  },
+  {
+    "title": "Research Paper Organizer",
+    "year": 2026,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "A productivity project for cataloging academic papers, notes, and reading progress for coursework and research."
+  },
+  {
+    "title": "Interactive Transit Map Prototype",
+    "year": 2025,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "A mapping prototype that visualizes transit routes and stop information for a cleaner commuting experience."
+  },
+  {
+    "title": "Coding Interview Practice Log",
+    "year": 2024,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "A structured tracker for recording solved problems, patterns, and review notes while preparing for technical interviews."
+  },
+  {
+    "title": "Machine Learning Experiment Notes",
+    "year": 2026,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "A project archive for documenting datasets, model configurations, and evaluation results from small ML experiments."
+  }
+]
