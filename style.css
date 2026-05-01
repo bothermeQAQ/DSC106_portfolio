@@ -143,6 +143,81 @@ button {
   color: color-mix(in oklch, canvastext 70%, canvas 30%);
 }
 
+.projects-chart {
+  --selected-color: oklch(70% 0.18 35);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25em;
+  align-items: flex-start;
+  margin-block: 2em;
+}
+
+#projects-pie-plot {
+  max-width: 20em;
+  flex: 0 0 20em;
+  overflow: visible;
+}
+
+#projects-pie-plot path {
+  cursor: pointer;
+  transition: opacity 200ms ease, fill 200ms ease;
+}
+
+#projects-pie-plot:hover path {
+  opacity: 0.35;
+}
+
+#projects-pie-plot path:hover,
+#projects-pie-plot path.selected {
+  opacity: 1;
+}
+
+#projects-pie-plot path.selected {
+  fill: var(--selected-color);
+}
+
+.legend {
+  list-style: none;
+  margin: 0;
+  padding: 0.75em 1em;
+  border: 1px solid color-mix(in oklch, canvastext 15%, canvas 85%);
+  border-radius: 0.75em;
+  display: grid;
+  gap: 0.5em;
+  min-width: 12em;
+}
+
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.legend li.selected {
+  --color: var(--selected-color) !important;
+  font-weight: 600;
+}
+
+.legend .swatch {
+  width: 0.9em;
+  height: 0.9em;
+  background: var(--color);
+  border: 1px solid color-mix(in oklch, canvastext 20%, canvas 80%);
+  border-radius: 0.2em;
+  flex: 0 0 auto;
+}
+
+#projects-search {
+  max-width: 30rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 700px) {
+  .projects-chart {
+    flex-direction: column;
+  }
+}
+
 h1,
 h2,
 h3,

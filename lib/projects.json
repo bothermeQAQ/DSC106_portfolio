@@ -24,10 +24,10 @@
     "description": "A data visualization project exploring enrollment patterns across university departments with interactive charts."
   },
   {
-    "title": "Campus Event Recommendation App",
-    "year": 2024,
+    "title": "BuyOrNot",
+    "year": 2026,
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "A mobile-friendly web app concept for helping students discover campus events based on interests and schedules."
+    "description": "A mobile app for browsing, rating, and comparing skins, with community discussions and personalized onboarding to help users decide what’s worth buying."
   },
   {
     "title": "Python Study Resource Tracker",
