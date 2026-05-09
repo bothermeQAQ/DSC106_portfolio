@@ -143,62 +143,64 @@ button {
   color: color-mix(in oklch, canvastext 70%, canvas 30%);
 }
 
-.projects-chart {
-  --selected-color: oklch(70% 0.18 35);
+.chart-section {
+  margin-block: 2em;
+}
+
+.chart-layout {
   display: flex;
   flex-wrap: wrap;
   gap: 1.25em;
   align-items: flex-start;
-  margin-block: 2em;
 }
 
-#projects-pie-plot {
-  max-width: 20em;
-  flex: 0 0 20em;
+#projects-bar-plot,
+#loc-bar-plot,
+#chart svg {
+  flex: 1 1 34rem;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
   overflow: visible;
 }
 
-#projects-pie-plot path {
-  cursor: pointer;
-  transition: opacity 200ms ease, fill 200ms ease;
+#chart {
+  margin-block: 1.5em;
 }
 
-#projects-pie-plot:hover path {
-  opacity: 0.35;
+.stats {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.55em 1em;
+  margin-block: 1em;
 }
 
-#projects-pie-plot path:hover,
-#projects-pie-plot path.selected {
-  opacity: 1;
+.stats dt {
+  font-weight: 600;
 }
 
-#projects-pie-plot path.selected {
-  fill: var(--selected-color);
+.stats dd {
+  margin: 0;
 }
 
-.legend {
+.chart-legend {
   list-style: none;
   margin: 0;
   padding: 0.75em 1em;
   border: 1px solid color-mix(in oklch, canvastext 15%, canvas 85%);
-  border-radius: 0.75em;
+  border-radius: 0.5em;
   display: grid;
   gap: 0.5em;
   min-width: 12em;
 }
 
-.legend li {
+.chart-legend li {
   display: flex;
   align-items: center;
   gap: 0.5em;
 }
 
-.legend li.selected {
-  --color: var(--selected-color) !important;
-  font-weight: 600;
-}
-
-.legend .swatch {
+.chart-legend .swatch {
   width: 0.9em;
   height: 0.9em;
   background: var(--color);
@@ -207,14 +209,131 @@ button {
   flex: 0 0 auto;
 }
 
+.bar {
+  shape-rendering: crispEdges;
+}
+
+.axis-label {
+  font-size: 0.8em;
+  font-weight: 600;
+  fill: currentColor;
+}
+
+.annotation {
+  font-size: 0.72em;
+  font-style: italic;
+  fill: currentColor;
+}
+
+.annotation-outline {
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+.annotation-line {
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+
+.annotation-arrow {
+  fill: currentColor;
+}
+
+.error {
+  color: oklch(55% 0.2 30);
+  font-weight: 600;
+}
+
+.gridlines line {
+  stroke: color-mix(in oklch, canvastext 18%, canvas 82%);
+  stroke-dasharray: 2 3;
+}
+
+.gridlines path {
+  display: none;
+}
+
+.dots circle {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: fill-opacity 150ms ease, stroke-width 150ms ease, transform 150ms ease;
+  pointer-events: all;
+}
+
+.dots circle:hover {
+  transform: scale(1.2);
+}
+
+.dots circle.selected {
+  fill: var(--color-accent);
+  stroke: currentColor;
+  stroke-width: 2.5;
+  fill-opacity: 1 !important;
+}
+
+.brush .selection {
+  fill: var(--color-accent);
+  fill-opacity: 0.18;
+  stroke: currentColor;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 10;
+  max-width: min(22rem, calc(100vw - 2rem));
+  padding: 0.75em 0.9em;
+  border: 1px solid color-mix(in oklch, canvastext 18%, canvas 82%);
+  border-radius: 0.5em;
+  background: canvas;
+  color: canvastext;
+  box-shadow: 0 0.5em 1.5em color-mix(in oklch, canvastext 18%, transparent);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 120ms ease;
+}
+
+.tooltip.visible {
+  opacity: 1;
+}
+
+.tooltip dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.35em 0.75em;
+  margin: 0;
+}
+
+.tooltip dt {
+  font-weight: 700;
+}
+
+.tooltip dd {
+  margin: 0;
+}
+
+#selection-count {
+  font-weight: 600;
+}
+
 #projects-search {
   max-width: 30rem;
   margin-bottom: 1.5rem;
 }
 
 @media (max-width: 700px) {
-  .projects-chart {
+  .chart-layout {
     flex-direction: column;
+  }
+
+  #projects-bar-plot,
+  #loc-bar-plot,
+  #chart svg {
+    flex-basis: auto;
+  }
+
+  .stats,
+  .tooltip dl {
+    grid-template-columns: 1fr;
   }
 }
 
