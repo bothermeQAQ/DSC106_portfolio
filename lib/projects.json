@@ -1,5 +1,12 @@
 [
   {
+    "title": "Bikewatching",
+    "year": 2026,
+    "image": "projects/images/bikewatching-preview.png",
+    "url": "https://bothermeqaq.github.io/bikewatching/",
+    "description": "An interactive Mapbox and D3 visualization of BlueBike traffic patterns in the Boston area, showing bike lanes, station activity, time filtering, and directional traffic flow."
+  },
+  {
     "title": "League of Legends Ban Pick Prediction Model",
     "year": 2025,
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",

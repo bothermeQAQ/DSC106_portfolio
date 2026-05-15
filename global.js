@@ -18,6 +18,14 @@ const BASE_PATH =
     ? '/lab-1/portfolio/'
     : '/DSC106_portfolio/';
 
+function resolveProjectImage(imagePath) {
+  if (!imagePath || imagePath.startsWith('http') || imagePath.startsWith('/')) {
+    return imagePath;
+  }
+
+  return BASE_PATH + imagePath.replace(/^\.\//, '');
+}
+
 let nav = document.createElement('nav');
 document.body.prepend(nav);
 
@@ -121,12 +129,48 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
 
   for (let project of projects) {
     const article = document.createElement('article');
-    article.innerHTML = `
-      <${headingLevel}>${project.title}</${headingLevel}>
-      <img src="${project.image}" alt="${project.title}">
-      <p>${project.description}</p>
-      <p>${project.year}</p>
-    `;
+    const heading = document.createElement(headingLevel);
+    heading.textContent = project.title;
+
+    const image = document.createElement('img');
+    image.src = resolveProjectImage(project.image);
+    image.alt = project.title;
+
+    const description = document.createElement('p');
+    description.className = 'project-description';
+    description.textContent = project.description;
+
+    const year = document.createElement('p');
+    year.className = 'project-year';
+    year.textContent = project.year;
+
+    if (project.url) {
+      const titleLink = document.createElement('a');
+      titleLink.className = 'project-title-link';
+      titleLink.href = project.url;
+      titleLink.target = '_blank';
+      titleLink.rel = 'noopener';
+      titleLink.append(heading);
+
+      const imageLink = document.createElement('a');
+      imageLink.className = 'project-image-link';
+      imageLink.href = project.url;
+      imageLink.target = '_blank';
+      imageLink.rel = 'noopener';
+      imageLink.append(image);
+
+      const visitLink = document.createElement('a');
+      visitLink.className = 'project-visit-link';
+      visitLink.href = project.url;
+      visitLink.target = '_blank';
+      visitLink.rel = 'noopener';
+      visitLink.textContent = 'Open project';
+
+      article.append(titleLink, imageLink, description, year, visitLink);
+    } else {
+      article.append(heading, image, description, year);
+    }
+
     containerElement.appendChild(article);
   }
 }
