@@ -5,6 +5,10 @@ body {
   padding-inline: 1em;
 }
 
+body.meta-page {
+  max-width: min(1180px, calc(100% - 2rem));
+}
+
 img {
   width: 400px;
   max-width: 100%;
@@ -206,6 +210,88 @@ button {
   margin-block: 1.5em;
 }
 
+.timeline-control {
+  padding-block: 0.25em;
+}
+
+.time-filter {
+  display: grid;
+  grid-template-columns: max-content minmax(12rem, 1fr) max-content;
+  grid-column: auto;
+  align-items: center;
+  gap: 0.75em;
+}
+
+.time-filter input {
+  width: 100%;
+}
+
+.time-filter time {
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+#scrolly-1,
+#scrolly-2 {
+  display: flex;
+  position: relative;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+#scatter-story,
+#scatter-plot,
+#files-story,
+#files-plot {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+#scatter-plot,
+#files-plot {
+  position: sticky;
+  top: 1rem;
+  align-self: flex-start;
+}
+
+#scatter-plot {
+  min-height: 50vh;
+}
+
+#files-plot {
+  max-height: calc(100vh - 2rem);
+  overflow: auto;
+}
+
+.step {
+  margin: 0 0 65vh;
+  padding: 1rem;
+  border-left: 0.25em solid color-mix(in oklch, canvastext 18%, canvas 82%);
+  color: color-mix(in oklch, canvastext 74%, canvas 26%);
+}
+
+.step:last-child {
+  margin-bottom: 35vh;
+}
+
+.step.is-active {
+  border-left-color: var(--color-accent);
+  color: canvastext;
+}
+
+.step h3 {
+  margin-block: 0.2em 0.35em;
+  font-size: 1.15em;
+}
+
+.step p {
+  margin-block: 0.4em;
+}
+
+.step-date {
+  font-size: 0.9em;
+}
+
 .stats {
   display: grid;
   grid-template-columns: max-content 1fr;
@@ -294,8 +380,18 @@ button {
 .dots circle {
   transform-box: fill-box;
   transform-origin: center;
-  transition: fill-opacity 150ms ease, stroke-width 150ms ease, transform 150ms ease;
+  transition:
+    cx 220ms ease,
+    cy 220ms ease,
+    r 220ms ease,
+    fill-opacity 150ms ease,
+    stroke-width 150ms ease,
+    transform 150ms ease;
   pointer-events: all;
+
+  @starting-style {
+    r: 0;
+  }
 }
 
 .dots circle:hover {
@@ -353,6 +449,53 @@ button {
   font-weight: 600;
 }
 
+#files {
+  display: grid;
+  grid-template-columns: minmax(12rem, 1fr) minmax(0, 4fr);
+  gap: 0.8em 1em;
+  margin: 0;
+}
+
+#files > div {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
+  align-items: start;
+}
+
+#files dt {
+  grid-column: 1;
+}
+
+#files dt code {
+  overflow-wrap: anywhere;
+}
+
+#files dt small {
+  display: block;
+  margin-top: 0.2em;
+  color: color-mix(in oklch, canvastext 60%, canvas 40%);
+}
+
+#files dd {
+  display: flex;
+  grid-column: 2;
+  flex-wrap: wrap;
+  align-items: start;
+  align-content: start;
+  gap: 0.15em;
+  min-width: 0;
+  margin: 0;
+  padding-top: 0.35em;
+}
+
+.loc {
+  width: 0.5em;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--color, steelblue);
+}
+
 #projects-search {
   max-width: 30rem;
   margin-bottom: 1.5rem;
@@ -372,6 +515,32 @@ button {
   .stats,
   .tooltip dl {
     grid-template-columns: 1fr;
+  }
+
+  .time-filter,
+  #files,
+  #files > div {
+    grid-template-columns: 1fr;
+  }
+
+  #scrolly-1,
+  #scrolly-2 {
+    flex-direction: column;
+  }
+
+  #scatter-plot,
+  #files-plot {
+    position: static;
+    width: 100%;
+    max-height: none;
+  }
+
+  #files dd {
+    grid-column: 1;
+  }
+
+  .step {
+    margin-bottom: 2rem;
   }
 }
 
