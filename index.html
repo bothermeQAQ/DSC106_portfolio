@@ -1,29 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script src="global.js" type="module"></script>
+  <script>
+    (() => {
+      try {
+        const saved = localStorage.getItem('portfolioTheme');
+        const legacy = localStorage.getItem('colorScheme');
+        const stored = saved === 'light' || saved === 'dark' ? saved : legacy;
+        const theme =
+          stored === 'light' || stored === 'dark'
+            ? stored
+            : matchMedia('(prefers-color-scheme: light)').matches
+              ? 'light'
+              : 'dark';
+
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+      } catch {
+        document.documentElement.dataset.theme = 'dark';
+      }
+    })();
+  </script>
+  <script src="global.js?v=portfolio-v2-20260520d" type="module"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Yonghao Wang: Personal site and portfolio</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="style.css?v=portfolio-v2-20260520d">
 </head>
-<body>
-  <h1>Yonghao Wang</h1>
+<body class="home-page">
+  <header class="home-hero" aria-labelledby="home-title">
+    <div class="home-hero__content">
+      <p class="eyebrow">Data Science / Full-stack Development / UC San Diego</p>
+      <h1 id="home-title">Yonghao Wang</h1>
+      <p class="home-hero__lede">
+        I build data-centered interfaces, visual systems, and practical software with a focus on
+        clarity, restraint, and technical craft.
+      </p>
+      <dl class="identity-grid" aria-label="Portfolio focus">
+        <div>
+          <dt>Current</dt>
+          <dd>Data Science Undergraduate</dd>
+        </div>
+        <div>
+          <dt>Mode</dt>
+          <dd>Analytical systems + visual storytelling</dd>
+        </div>
+        <div>
+          <dt>Base</dt>
+          <dd>UC San Diego</dd>
+        </div>
+      </dl>
+    </div>
 
-  <p>
-    Hi, I’m Yonghao Wang. I am a student at UC San Diego studying Data Science.
-    This website is my personal portfolio for DSC 106, where I will share my projects,
-    experience, and more about me.
-  </p>
+    <figure class="portrait-panel">
+      <img src="images/yuumi.jpg" alt="A photo of my cat Yuumi">
+      <figcaption>Quiet systems, precise interfaces, clear evidence.</figcaption>
+    </figure>
+  </header>
 
-  <img src="images/yuumi.jpg" alt="A photo of my cat Yuumi">
+  <section class="home-section home-projects" aria-labelledby="latest-projects-title">
+    <div class="section-heading">
+      <p class="eyebrow">Selected work</p>
+      <h2 id="latest-projects-title">Latest Projects</h2>
+    </div>
+    <div class="projects"></div>
+  </section>
 
-  <h2>Latest Projects</h2>
-  <div class="projects"></div>
+  <section class="home-section home-stats" aria-labelledby="github-stats-title">
+    <div class="section-heading">
+      <p class="eyebrow">Open source signal</p>
+      <h2 id="github-stats-title">GitHub Stats</h2>
+    </div>
+    <div id="profile-stats"></div>
+  </section>
 
-  <h2>My GitHub Stats</h2>
-  <div id="profile-stats"></div>
-
-  <script src="index.js" type="module" defer></script>
+  <script src="index.js?v=portfolio-v2-20260520d" type="module" defer></script>
 </body>
 </html>

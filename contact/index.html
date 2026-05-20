@@ -1,29 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script src="../global.js" type="module"></script>
+  <script>
+    (() => {
+      try {
+        const saved = localStorage.getItem('portfolioTheme');
+        const legacy = localStorage.getItem('colorScheme');
+        const stored = saved === 'light' || saved === 'dark' ? saved : legacy;
+        const theme =
+          stored === 'light' || stored === 'dark'
+            ? stored
+            : matchMedia('(prefers-color-scheme: light)').matches
+              ? 'light'
+              : 'dark';
+
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+      } catch {
+        document.documentElement.dataset.theme = 'dark';
+      }
+    })();
+  </script>
+  <script src="../global.js?v=portfolio-v2-20260520d" type="module"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact - Yonghao Wang</title>
-  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../style.css?v=portfolio-v2-20260520d">
 </head>
-<body>
-  <h1>Contact</h1>
+<body class="contact-page">
+  <main class="contact-layout">
+    <section class="contact-intro" aria-labelledby="contact-title">
+      <p class="eyebrow">Direct signal</p>
+      <h1 id="contact-title">Contact</h1>
+      <p>
+        For collaborations, project questions, or technical conversations, send a concise note.
+        I usually respond fastest by email.
+      </p>
 
-  <p>You can reach me through the form below.</p>
+      <div class="contact-channels" aria-label="Contact channels">
+        <a href="mailto:yonghaowang16@gmail.com">
+          <span>Email</span>
+          <strong>yonghaowang16@gmail.com</strong>
+        </a>
+        <a href="https://github.com/bothermeQAQ" target="_blank" rel="noopener">
+          <span>GitHub</span>
+          <strong>bothermeQAQ</strong>
+        </a>
+      </div>
+    </section>
 
-  <form action="mailto:yonghaowang16@gmail.com">
-    <label>
-      Subject:
-      <input name="subject" value="Hello">
-    </label>
+    <form class="contact-form" action="mailto:yonghaowang16@gmail.com">
+      <label>
+        Subject
+        <input name="subject" value="Hello">
+      </label>
 
-    <label>
-      Message:
-      <textarea name="body" rows="6">Hi Yonghao, I wanted to reach out.</textarea>
-    </label>
+      <label>
+        Message
+        <textarea name="body" rows="6">Hi Yonghao, I wanted to reach out.</textarea>
+      </label>
 
-    <button type="submit">Submit</button>
-  </form>
+      <button type="submit">Submit</button>
+    </form>
+  </main>
 </body>
 </html>

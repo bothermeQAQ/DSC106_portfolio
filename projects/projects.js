@@ -1,9 +1,15 @@
-import { fetchJSON, renderProjects } from '../global.js';
+import { fetchJSON, renderProjects } from '../global.js?v=portfolio-v2-20260520d';
 import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
 
-const projects = await fetchJSON('../lib/projects.json');
+const projects = await fetchJSON('../lib/projects.json?v=portfolio-v2-20260520d');
 const projectsContainer = document.querySelector('.projects');
 const searchInput = document.querySelector('#projects-search');
+const projectChartPalette = [
+  'var(--chart-bar-strong)',
+  'var(--chart-dot)',
+  'var(--chart-highlight)',
+  'var(--chart-bar-muted)'
+];
 let query = '';
 
 function getProjectsByYear(projectsGiven) {
@@ -45,7 +51,7 @@ function renderProjectsBarChart(projectsGiven) {
     .range([innerHeight, 0]);
 
   const colorScale = d3
-    .scaleOrdinal(d3.schemeTableau10)
+    .scaleOrdinal(projectChartPalette)
     .domain(data.map((d) => String(d.label)));
 
   svg.attr('viewBox', `0 0 ${width} ${height}`).selectAll('*').remove();

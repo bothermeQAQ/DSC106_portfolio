@@ -1,14 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script src="../global.js" type="module"></script>
+  <script>
+    (() => {
+      try {
+        const saved = localStorage.getItem('portfolioTheme');
+        const legacy = localStorage.getItem('colorScheme');
+        const stored = saved === 'light' || saved === 'dark' ? saved : legacy;
+        const theme =
+          stored === 'light' || stored === 'dark'
+            ? stored
+            : matchMedia('(prefers-color-scheme: light)').matches
+              ? 'light'
+              : 'dark';
+
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+      } catch {
+        document.documentElement.dataset.theme = 'dark';
+      }
+    })();
+  </script>
+  <script src="../global.js?v=portfolio-v2-20260520d" type="module"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Resume - Yonghao Wang</title>
-  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../style.css?v=portfolio-v2-20260520d">
 </head>
-<body>
-  <h1>Resume</h1>
+<body class="resume-page">
+  <header class="page-intro">
+    <p class="eyebrow">Experience archive</p>
+    <h1>Resume</h1>
+    <p>Technical background, project work, and applied data science experience in one scannable record.</p>
+  </header>
 
   <section>
     <h2>Yonghao Wang</h2>

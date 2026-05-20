@@ -1,81 +1,208 @@
 [
   {
+    "title": "NYC Airbnb Price Prediction — Kaggle Competition",
+    "year": 2026,
+    "category": "Machine Learning / Kaggle / Tabular Modeling",
+    "featured": true,
+    "image": "assets/project-covers/airbnb-price-intelligence.png",
+    "description": "A Kaggle competition project predicting NYC Airbnb nightly prices with a stacked ensemble of LightGBM, XGBoost, and CatBoost models, combining text, geographic, host, review, and amenity features.",
+    "result": "Competition result at submission time: OOF MAE around 35.97 and public leaderboard MAE around 36.18.",
+    "tags": [
+      "Python",
+      "Kaggle",
+      "Machine Learning",
+      "LightGBM",
+      "XGBoost",
+      "CatBoost",
+      "Feature Engineering",
+      "Ensemble"
+    ]
+  },
+  {
+    "title": "Warming Unevenly — DSC 106 Project 3",
+    "year": 2026,
+    "category": "Interactive Data Visualization / Climate Data / D3",
+    "featured": true,
+    "image": "assets/project-covers/warming-unevenly.png",
+    "url": "https://bothermeqaq.github.io/dsc106-project3/",
+    "liveUrl": "https://bothermeqaq.github.io/dsc106-project3/",
+    "sourceUrl": "https://github.com/bothermeQAQ/dsc106-project3",
+    "description": "An interactive climate visualization showing which world regions heat up fastest under different CMIP6 scenarios, with linked ranking and trend charts, scenario controls, a year slider, and tooltips.",
+    "result": "Uses CMIP6 near-surface air temperature anomalies against a 1995-2014 baseline, with the Arctic treated as a separate polar analysis region north of 66.5°N.",
+    "tags": [
+      "D3.js",
+      "Climate Data",
+      "CMIP6",
+      "Data Visualization",
+      "Interaction Design",
+      "JavaScript"
+    ]
+  },
+  {
     "title": "Bikewatching",
     "year": 2026,
-    "image": "projects/images/bikewatching-preview.png",
+    "category": "Interactive Data Visualization / Urban Mobility",
+    "featured": true,
+    "image": "assets/project-covers/bikewatching.png",
     "url": "https://bothermeqaq.github.io/bikewatching/",
-    "description": "An interactive Mapbox and D3 visualization of BlueBike traffic patterns in the Boston area, showing bike lanes, station activity, time filtering, and directional traffic flow."
+    "liveUrl": "https://bothermeqaq.github.io/bikewatching/",
+    "description": "An interactive Mapbox and D3 visualization of BlueBike traffic patterns in the Boston area, showing bike lanes, station activity, time filtering, and directional traffic flow.",
+    "tags": [
+      "D3.js",
+      "Mapbox",
+      "Urban Data",
+      "Interaction Design",
+      "JavaScript"
+    ]
   },
   {
     "title": "League of Legends Ban Pick Prediction Model",
     "year": 2025,
+    "category": "Machine Learning / Esports Analytics",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "A machine learning idea centered on analyzing drafting patterns and predicting game outcomes from champion select data."
+    "description": "A machine learning project concept for analyzing champion-select drafting patterns and modeling game outcomes from team composition, role, and matchup signals.",
+    "tags": [
+      "Machine Learning",
+      "Python",
+      "Esports",
+      "Classification"
+    ]
   },
   {
     "title": "WeChat Bot Integration for UCSD CSSA",
     "year": 2024,
+    "category": "Automation / Student Organization Tooling",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "A student organization tool project involving communication automation and integration features for club operations."
+    "description": "A student organization tooling project focused on communication automation, operational workflows, and integration support for UCSD CSSA club activity.",
+    "tags": [
+      "Automation",
+      "Bot Integration",
+      "Operations",
+      "JavaScript"
+    ]
   },
   {
     "title": "Personal Portfolio Website",
     "year": 2026,
+    "category": "Frontend / Design System",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "A personal website for DSC 106 that showcases my background, resume, and future visualization projects."
+    "description": "A personal portfolio built as a quiet monochrome design system, with dark and light material modes, project curation, resume content, and D3-powered meta analysis.",
+    "tags": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Design System",
+      "D3.js"
+    ]
   },
   {
     "title": "Course Enrollment Trend Dashboard",
     "year": 2023,
+    "category": "Data Visualization / Education Analytics",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "A data visualization project exploring enrollment patterns across university departments with interactive charts."
+    "description": "A data visualization project exploring enrollment patterns across university departments with interactive charts and trend comparisons.",
+    "tags": [
+      "Data Visualization",
+      "Education Data",
+      "Dashboard"
+    ]
   },
   {
     "title": "BuyOrNot",
     "year": 2026,
+    "category": "Mobile Product / Community App",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "A mobile app for browsing, rating, and comparing skins, with community discussions and personalized onboarding to help users decide what’s worth buying."
+    "description": "A mobile app for browsing, rating, and comparing skins, with community discussions and personalized onboarding to help users decide what is worth buying.",
+    "tags": [
+      "Mobile App",
+      "Product Design",
+      "Community",
+      "Personalization"
+    ]
   },
   {
     "title": "Python Study Resource Tracker",
     "year": 2023,
+    "category": "Developer Tooling / Learning Systems",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "A lightweight tool for organizing programming tutorials, assignments, and notes for technical coursework."
+    "description": "A lightweight tool for organizing programming tutorials, assignments, notes, and review status across technical coursework.",
+    "tags": [
+      "Python",
+      "Productivity",
+      "Learning Tools"
+    ]
   },
   {
     "title": "Weather Data API Explorer",
     "year": 2025,
+    "category": "API / Data Exploration",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "A programming project that fetches and summarizes weather data from public APIs for analysis and visualization."
+    "description": "A programming project that fetches, cleans, and summarizes weather data from public APIs for lightweight analysis and visualization.",
+    "tags": [
+      "API",
+      "JavaScript",
+      "Data Cleaning",
+      "Visualization"
+    ]
   },
   {
     "title": "Student Budget Planner",
     "year": 2024,
+    "category": "Web App / Personal Finance",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "A personal finance web tool designed to help students estimate monthly expenses and track spending goals."
+    "description": "A personal finance web tool designed to help students estimate monthly expenses, compare recurring costs, and track spending goals.",
+    "tags": [
+      "Web App",
+      "Finance",
+      "Planning"
+    ]
   },
   {
     "title": "Research Paper Organizer",
     "year": 2026,
+    "category": "Productivity / Research Workflow",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "A productivity project for cataloging academic papers, notes, and reading progress for coursework and research."
+    "description": "A productivity project for cataloging academic papers, notes, reading status, and follow-up questions for coursework and research.",
+    "tags": [
+      "Productivity",
+      "Research",
+      "Knowledge Management"
+    ]
   },
   {
     "title": "Interactive Transit Map Prototype",
     "year": 2025,
+    "category": "Mapping / Transit Interface",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "A mapping prototype that visualizes transit routes and stop information for a cleaner commuting experience."
+    "description": "A mapping prototype that visualizes transit routes, stop information, and route context for a cleaner commuting experience.",
+    "tags": [
+      "Maps",
+      "Transit",
+      "Interface Design"
+    ]
   },
   {
     "title": "Coding Interview Practice Log",
     "year": 2024,
+    "category": "Learning System / Technical Practice",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "A structured tracker for recording solved problems, patterns, and review notes while preparing for technical interviews."
+    "description": "A structured tracker for recording solved problems, patterns, review notes, and weak areas while preparing for technical interviews.",
+    "tags": [
+      "Algorithms",
+      "Tracking",
+      "Study System"
+    ]
   },
   {
     "title": "Machine Learning Experiment Notes",
     "year": 2026,
+    "category": "Machine Learning / Experiment Tracking",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "A project archive for documenting datasets, model configurations, and evaluation results from small ML experiments."
+    "description": "A project archive for documenting datasets, model configurations, feature notes, and evaluation results from small ML experiments.",
+    "tags": [
+      "Machine Learning",
+      "Experiment Tracking",
+      "Python"
+    ]
   }
 ]

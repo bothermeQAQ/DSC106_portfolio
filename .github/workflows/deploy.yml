@@ -36,7 +36,7 @@ jobs:
       - name: Prepare static site
         run: |
           mkdir _site
-          cp -R *.html *.js *.css contact images lib meta projects resume _site/
+          cp -R *.html *.js *.css assets contact images lib meta projects resume _site/
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

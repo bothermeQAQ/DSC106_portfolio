@@ -1,7 +1,8 @@
-import { fetchJSON, renderProjects, fetchGitHubData } from './global.js';
+import { fetchJSON, renderProjects, fetchGitHubData } from './global.js?v=portfolio-v2-20260520d';
 
-const projects = await fetchJSON('./lib/projects.json');
-const latestProjects = projects.slice(0, 3);
+const projects = await fetchJSON('./lib/projects.json?v=portfolio-v2-20260520d');
+const featuredProjects = projects.filter((project) => project.featured);
+const latestProjects = [...featuredProjects, ...projects.filter((project) => !project.featured)].slice(0, 3);
 const projectsContainer = document.querySelector('.projects');
 const githubData = await fetchGitHubData('bothermeQAQ');
 const profileStats = document.querySelector('#profile-stats');

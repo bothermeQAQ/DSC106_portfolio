@@ -1,15 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+    (() => {
+      try {
+        const saved = localStorage.getItem('portfolioTheme');
+        const legacy = localStorage.getItem('colorScheme');
+        const stored = saved === 'light' || saved === 'dark' ? saved : legacy;
+        const theme =
+          stored === 'light' || stored === 'dark'
+            ? stored
+            : matchMedia('(prefers-color-scheme: light)').matches
+              ? 'light'
+              : 'dark';
+
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+      } catch {
+        document.documentElement.dataset.theme = 'dark';
+      }
+    })();
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projects - Yonghao Wang</title>
-  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../style.css?v=portfolio-v2-20260520d">
 </head>
-<body>
-  <h1 class="projects-title">Projects</h1>
-
-  <p>Here are some of the projects I have worked on.</p>
+<body class="projects-page">
+  <header class="page-intro">
+    <p class="eyebrow">Curated portfolio</p>
+    <h1 class="projects-title">Projects</h1>
+    <p>
+      A focused archive of visualization, software, and data projects. The chart summarizes the
+      timeline; the cards below carry the work.
+    </p>
+  </header>
 
   <section class="chart-section" aria-labelledby="projects-chart-title">
     <h2 id="projects-chart-title">Projects by Year</h2>
@@ -19,16 +45,21 @@
     </div>
   </section>
 
-  <input
-    id="projects-search"
-    type="search"
-    aria-label="Search projects"
-    placeholder="🔍 Search projects…"
-  >
+  <div class="projects-toolbar">
+    <label for="projects-search">
+      Search
+      <input
+        id="projects-search"
+        type="search"
+        aria-label="Search projects"
+        placeholder="Search projects..."
+      >
+    </label>
+  </div>
 
   <div class="projects"></div>
 
-  <script src="../global.js" type="module"></script>
-  <script src="projects.js" type="module"></script>
+  <script src="../global.js?v=portfolio-v2-20260520d" type="module"></script>
+  <script src="projects.js?v=portfolio-v2-20260520d" type="module"></script>
 </body>
 </html>

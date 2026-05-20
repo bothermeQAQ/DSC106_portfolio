@@ -1,5 +1,3 @@
-console.log("IT'S ALIVE!");
-
 function $$(selector, context = document) {
   return Array.from(context.querySelectorAll(selector));
 }
@@ -18,6 +16,9 @@ const BASE_PATH =
     ? '/lab-1/portfolio/'
     : '/DSC106_portfolio/';
 
+const THEME_STORAGE_KEY = 'portfolioTheme';
+const systemThemeQuery = window.matchMedia('(prefers-color-scheme: light)');
+
 function resolveProjectImage(imagePath) {
   if (!imagePath || imagePath.startsWith('http') || imagePath.startsWith('/')) {
     return imagePath;
@@ -25,6 +26,219 @@ function resolveProjectImage(imagePath) {
 
   return BASE_PATH + imagePath.replace(/^\.\//, '');
 }
+
+function isPlaceholderProjectImage(imagePath) {
+  return !imagePath || imagePath.includes('/empty.svg');
+}
+
+function getPrimaryProjectUrl(project) {
+  return project.liveUrl || project.url || project.sourceUrl || '';
+}
+
+function createProjectMedia(project) {
+  const primaryUrl = getPrimaryProjectUrl(project);
+  const media = isPlaceholderProjectImage(project.image)
+    ? createGeneratedProjectThumb(project)
+    : createProjectImage(project);
+
+  if (!primaryUrl) {
+    return media;
+  }
+
+  const link = document.createElement('a');
+  link.className = 'project-image-link';
+  link.href = primaryUrl;
+  link.target = '_blank';
+  link.rel = 'noopener';
+  link.append(media);
+  return link;
+}
+
+function createProjectImage(project) {
+  const image = document.createElement('img');
+  image.src = resolveProjectImage(project.image);
+  image.alt = project.title;
+  return image;
+}
+
+function createGeneratedProjectThumb(project) {
+  const thumb = document.createElement('div');
+  const label = document.createElement('span');
+  const title = document.createElement('strong');
+  const detail = document.createElement('span');
+
+  thumb.className = 'project-generated-thumb';
+  label.className = 'project-generated-thumb__label';
+  title.className = 'project-generated-thumb__title';
+  detail.className = 'project-generated-thumb__detail';
+
+  label.textContent = project.category || 'Portfolio Project';
+  title.textContent = project.title;
+  detail.textContent = project.year;
+
+  thumb.append(label, title, detail);
+  return thumb;
+}
+
+function createProjectTitle(project, heading) {
+  const primaryUrl = getPrimaryProjectUrl(project);
+
+  if (!primaryUrl) {
+    return heading;
+  }
+
+  const titleLink = document.createElement('a');
+  titleLink.className = 'project-title-link';
+  titleLink.href = primaryUrl;
+  titleLink.target = '_blank';
+  titleLink.rel = 'noopener';
+  titleLink.append(heading);
+  return titleLink;
+}
+
+function createProjectMeta(project) {
+  const meta = document.createElement('p');
+  const year = document.createElement('span');
+
+  meta.className = 'project-meta';
+  year.className = 'project-year';
+  year.textContent = project.year;
+  meta.append(year);
+
+  if (project.category) {
+    const category = document.createElement('span');
+    category.className = 'project-category';
+    category.textContent = project.category;
+    meta.append(category);
+  }
+
+  return meta;
+}
+
+function createProjectTags(project) {
+  if (!Array.isArray(project.tags) || project.tags.length === 0) {
+    return null;
+  }
+
+  const tags = document.createElement('ul');
+  tags.className = 'project-tags';
+
+  for (const tag of project.tags.slice(0, 8)) {
+    const item = document.createElement('li');
+    item.textContent = tag;
+    tags.append(item);
+  }
+
+  return tags;
+}
+
+function createProjectActions(project) {
+  const actions = document.createElement('div');
+  actions.className = 'project-actions';
+
+  const links = [
+    { url: project.liveUrl || project.url, label: 'View Live' },
+    { url: project.sourceUrl, label: 'Source' }
+  ].filter((link, index, linksGiven) => {
+    return link.url && linksGiven.findIndex((candidate) => candidate.url === link.url) === index;
+  });
+
+  for (const link of links) {
+    const anchor = document.createElement('a');
+    anchor.className = 'project-visit-link';
+    anchor.href = link.url;
+    anchor.target = '_blank';
+    anchor.rel = 'noopener';
+    anchor.textContent = link.label;
+    actions.append(anchor);
+  }
+
+  return actions.children.length > 0 ? actions : null;
+}
+
+function getStoredTheme() {
+  try {
+    const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+    const legacyTheme = localStorage.getItem('colorScheme');
+
+    if (savedTheme === 'light' || savedTheme === 'dark') {
+      return savedTheme;
+    }
+
+    if (legacyTheme === 'light' || legacyTheme === 'dark') {
+      return legacyTheme;
+    }
+  } catch {
+    return null;
+  }
+
+  return null;
+}
+
+function getSystemTheme() {
+  return systemThemeQuery.matches ? 'light' : 'dark';
+}
+
+function applyTheme(theme, { persist = false } = {}) {
+  const nextTheme = theme === 'light' ? 'light' : 'dark';
+  document.documentElement.dataset.theme = nextTheme;
+  document.documentElement.style.colorScheme = nextTheme;
+
+  if (persist) {
+    try {
+      localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+    } catch {
+      // Ignore storage failures; the visible theme should still change.
+    }
+  }
+
+  window.dispatchEvent(
+    new CustomEvent('portfolio-theme-change', {
+      detail: { theme: nextTheme }
+    })
+  );
+
+  return nextTheme;
+}
+
+function renderThemeToggle(container) {
+  const button = document.createElement('button');
+  const icon = document.createElement('span');
+  const text = document.createElement('span');
+
+  button.type = 'button';
+  button.className = 'theme-toggle';
+  icon.className = 'theme-toggle__icon';
+  text.className = 'theme-toggle__text';
+  icon.setAttribute('aria-hidden', 'true');
+
+  button.append(icon, text);
+  container.append(button);
+
+  function update(theme) {
+    const label = theme === 'light' ? 'Light' : 'Dark';
+    const nextLabel = theme === 'light' ? 'dark' : 'light';
+
+    text.textContent = label;
+    button.dataset.theme = theme;
+    button.setAttribute('aria-pressed', String(theme === 'light'));
+    button.setAttribute('aria-label', `Switch to ${nextLabel} theme`);
+  }
+
+  button.addEventListener('click', () => {
+    const currentTheme = document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
+    const nextTheme = currentTheme === 'light' ? 'dark' : 'light';
+    update(applyTheme(nextTheme, { persist: true }));
+  });
+
+  window.addEventListener('portfolio-theme-change', (event) => {
+    update(event.detail.theme);
+  });
+
+  update(document.documentElement.dataset.theme === 'light' ? 'light' : 'dark');
+}
+
+applyTheme(getStoredTheme() || document.documentElement.dataset.theme || getSystemTheme());
 
 let nav = document.createElement('nav');
 document.body.prepend(nav);
@@ -51,36 +265,12 @@ for (let p of pages) {
   nav.append(a);
 }
 
-document.body.insertAdjacentHTML(
-  'afterbegin',
-  `
-    <label class="color-scheme">
-      Theme:
-      <select>
-        <option value="light dark">Automatic</option>
-        <option value="light">Light</option>
-        <option value="dark">Dark</option>
-      </select>
-    </label>
-  `
-);
+renderThemeToggle(nav);
 
-let select = document.querySelector('.color-scheme select');
-
-function setColorScheme(colorScheme) {
-  document.documentElement.style.setProperty('color-scheme', colorScheme);
-}
-
-if ('colorScheme' in localStorage) {
-  let savedColorScheme = localStorage.colorScheme;
-  setColorScheme(savedColorScheme);
-  select.value = savedColorScheme;
-}
-
-select.addEventListener('input', function (event) {
-  let colorScheme = event.target.value;
-  setColorScheme(colorScheme);
-  localStorage.colorScheme = colorScheme;
+systemThemeQuery.addEventListener('change', () => {
+  if (!getStoredTheme()) {
+    applyTheme(getSystemTheme());
+  }
 });
 
 let form = document.querySelector('form');
@@ -129,48 +319,49 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
 
   for (let project of projects) {
     const article = document.createElement('article');
+    article.className = 'project-card';
+
+    if (project.featured) {
+      article.classList.add('project-card--featured');
+    }
+
+    if (project.category) {
+      article.dataset.category = project.category;
+    }
+
     const heading = document.createElement(headingLevel);
     heading.textContent = project.title;
-
-    const image = document.createElement('img');
-    image.src = resolveProjectImage(project.image);
-    image.alt = project.title;
 
     const description = document.createElement('p');
     description.className = 'project-description';
     description.textContent = project.description;
 
-    const year = document.createElement('p');
-    year.className = 'project-year';
-    year.textContent = project.year;
+    const cardParts = [
+      createProjectTitle(project, heading),
+      createProjectMedia(project),
+      createProjectMeta(project),
+      description
+    ];
 
-    if (project.url) {
-      const titleLink = document.createElement('a');
-      titleLink.className = 'project-title-link';
-      titleLink.href = project.url;
-      titleLink.target = '_blank';
-      titleLink.rel = 'noopener';
-      titleLink.append(heading);
-
-      const imageLink = document.createElement('a');
-      imageLink.className = 'project-image-link';
-      imageLink.href = project.url;
-      imageLink.target = '_blank';
-      imageLink.rel = 'noopener';
-      imageLink.append(image);
-
-      const visitLink = document.createElement('a');
-      visitLink.className = 'project-visit-link';
-      visitLink.href = project.url;
-      visitLink.target = '_blank';
-      visitLink.rel = 'noopener';
-      visitLink.textContent = 'Open project';
-
-      article.append(titleLink, imageLink, description, year, visitLink);
-    } else {
-      article.append(heading, image, description, year);
+    if (project.result) {
+      const result = document.createElement('p');
+      result.className = 'project-result';
+      result.textContent = project.result;
+      cardParts.push(result);
     }
 
+    const tags = createProjectTags(project);
+    const actions = createProjectActions(project);
+
+    if (tags) {
+      cardParts.push(tags);
+    }
+
+    if (actions) {
+      cardParts.push(actions);
+    }
+
+    article.append(...cardParts);
     containerElement.appendChild(article);
   }
 }

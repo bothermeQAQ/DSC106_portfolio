@@ -397,7 +397,7 @@ function updateScatterPlot(rows, commitsToUse = filteredCommits, { resetBrush = 
     .attr('cx', (d) => chartState.xScale(d.datetime))
     .attr('cy', (d) => chartState.yScale(d.hourFrac))
     .attr('r', (d) => rScale(d.totalLines))
-    .attr('fill', 'steelblue')
+    .attr('fill', 'var(--chart-dot)')
     .style('fill-opacity', 0.7);
 
   bindCircleEvents(circles);

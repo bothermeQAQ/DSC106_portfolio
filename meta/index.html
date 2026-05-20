@@ -1,15 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+    (() => {
+      try {
+        const saved = localStorage.getItem('portfolioTheme');
+        const legacy = localStorage.getItem('colorScheme');
+        const stored = saved === 'light' || saved === 'dark' ? saved : legacy;
+        const theme =
+          stored === 'light' || stored === 'dark'
+            ? stored
+            : matchMedia('(prefers-color-scheme: light)').matches
+              ? 'light'
+              : 'dark';
+
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+      } catch {
+        document.documentElement.dataset.theme = 'dark';
+      }
+    })();
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Meta - Yonghao Wang</title>
-  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../style.css?v=portfolio-v2-20260520d">
 </head>
 <body class="meta-page">
-  <h1>Meta</h1>
-
-  <p>This page summarizes code statistics for this portfolio.</p>
+  <header class="page-intro">
+    <p class="eyebrow">Build telemetry</p>
+    <h1>Meta</h1>
+    <p>This page summarizes code statistics for this portfolio.</p>
+  </header>
 
   <section aria-labelledby="evolution-title" class="timeline-control">
     <h2 id="evolution-title">Codebase Evolution</h2>
@@ -49,7 +72,7 @@
 
   <div id="commit-tooltip" class="tooltip" role="tooltip" aria-hidden="true"></div>
 
-  <script src="../global.js" type="module"></script>
-  <script src="meta.js" type="module"></script>
+  <script src="../global.js?v=portfolio-v2-20260520d" type="module"></script>
+  <script src="meta.js?v=portfolio-v2-20260520d" type="module"></script>
 </body>
 </html>

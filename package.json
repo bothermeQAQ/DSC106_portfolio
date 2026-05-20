@@ -1,0 +1,14 @@
+{
+  "name": "dsc106-portfolio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate:covers": "node scripts/generate-project-covers.mjs",
+    "optimize:covers": "node scripts/generate-project-covers.mjs --optimize-only",
+    "check:js": "node --check global.js && node --check index.js && node --check projects/projects.js && node --check meta/meta.js && node --check scripts/generate-project-covers.mjs"
+  },
+  "dependencies": {
+    "openai": "^6.38.0",
+    "sharp": "^0.34.5"
+  }
+}

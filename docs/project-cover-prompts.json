@@ -1,0 +1,51 @@
+[
+  {
+    "slug": "airbnb-price-intelligence",
+    "title": "NYC Airbnb Price Prediction \u2014 Kaggle Competition",
+    "primaryStyleName": "Urban Pricing Intelligence Map",
+    "prompt": "Create a 4:3 cover image for \"NYC Airbnb Price Intelligence\", a machine learning project that predicts NYC Airbnb nightly prices. Show a stylized NYC borough and street-grid map transformed into a pricing intelligence dashboard: neighborhood clusters, listing-card fragments, price bands, geospatial dots, a prediction curve with confidence interval, feature-signal chips for location, amenities, reviews, and text features, and three model layers merging into one final prediction. The mood should be urban, analytical, product-ready, and practical. Use deep urban navy, concrete gray, warm apartment-window amber, muted model green, and off-white interface surfaces. Make it feel like a real pricing data product, not a generic AI poster. Minimal readable text is allowed: \"NYC Airbnb Price Intelligence\", \"Pricing / Geospatial / NLP\", \"Predict - Explain - Compare\". Avoid official Airbnb branding, exact platform UI, Kaggle trophies, AI brains, and tiny unreadable labels.",
+    "negativePrompt": [
+      "official Airbnb logo or brand marks",
+      "generic AI brain or robot",
+      "Kaggle trophy-first poster",
+      "exact Airbnb or Kaggle UI",
+      "unreadable tiny dashboard text",
+      "uniform dark poster template",
+      "luxury real-estate photography that hides the data story"
+    ],
+    "suggestedFilename": "airbnb-price-intelligence.png"
+  },
+  {
+    "slug": "warming-unevenly",
+    "title": "Warming Unevenly \u2014 DSC 106 Project 3",
+    "primaryStyleName": "Scenario Climate Anomaly Atlas",
+    "prompt": "Create a 4:3 cover image for \"Warming Unevenly\", an interactive climate data visualization about regional warming differences under CMIP6 scenarios. Show a designed climate anomaly map with regions warming at visibly different rates, an emphasized Arctic/polar region showing polar amplification, side-by-side scenario comparison bands, a subtle year-slider cue, a trend line, and a small regional ranking panel. The image should feel like a climate-science visualization interface, not a generic Earth wallpaper. Use cool ocean blues and pale cyan for baseline areas, thermal orange/coral/deep red for stronger anomalies, and a restrained violet accent for extreme polar amplification. Minimal readable text is allowed: \"Warming Unevenly\", \"CMIP6 Scenarios\", \"Scenario - Compare - Explore\". Avoid burning planet imagery, disaster-photo aesthetics, official institutional marks, and unreadable tiny labels.",
+    "negativePrompt": [
+      "generic photorealistic Earth wallpaper",
+      "burning planet cliche",
+      "flood/fire/disaster-photo main concept",
+      "full red/orange wash with no regional contrast",
+      "official climate-agency marks",
+      "unreadable scientific labels",
+      "same-template dark dashboard treatment"
+    ],
+    "suggestedFilename": "warming-unevenly.png"
+  },
+  {
+    "slug": "bikewatching",
+    "title": "Bikewatching",
+    "primaryStyleName": "Boston Mobility Flow Map",
+    "prompt": "Create a 4:3 cover image for \"Bikewatching\", an urban mobility data visualization of Boston/Cambridge bike-share traffic built with Mapbox and D3. Show a simplified Boston/Cambridge street-grid and river silhouette, bike station dots sized by activity, directional flow lines between station clusters, a subtle time-of-day sweep, and density hotspots that suggest commuting movement. The image should feel like a designed mobility-data identity, not a raw app screenshot. Use Charles River blue, harbor teal, bike-lane green, warm commuter yellow, asphalt gray, and off-white map neutrals. Minimal readable text is allowed: \"Bikewatching\", \"Urban Mobility / Mapbox / D3\", \"Flow - Map - Explore\". Avoid official bike-share logos, Mapbox branding, exact map tiles, generic bicycle poster art, and overly cluttered transit-map colors.",
+    "negativePrompt": [
+      "official BlueBike logo",
+      "Mapbox branding",
+      "raw screenshot replacement",
+      "generic bicycle illustration without data layer",
+      "cluttered transit-map color overload",
+      "exact real map tiles or copyrighted cartography",
+      "uniform dark poster style copied from other covers",
+      "tiny station labels"
+    ],
+    "suggestedFilename": "bikewatching.png"
+  }
+]
